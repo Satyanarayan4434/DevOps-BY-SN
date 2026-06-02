@@ -1,0 +1,35 @@
+sudo su
+yum update -y
+yum install git -y
+which git
+git --version
+git config --global user.name "ulhas"
+git config --global user.email "ulhas@gmail.com"
+giit config --list
+
+
+create one directory and go inside it : mkdir region git | ls | cd regiongit 
+git init ----------> /home/ec2-user/regiongit/.git/       Local repository 
+(touch myfile)--------------------- cat >myfile
+git status
+git add .
+git status
+git commit -m "1st commit from one region"-------------- 1 file changed 1 insertion  
+git status----------------- nothing to commit working tree clean
+git log------------- commit id| author | date | 
+git show <commit id> (get commit id from copy paste----------------- showing all info
+git remote add origin <centralgithub url> ------------- go to GitHub | Login | create repository | repository name :public |create | url
+git push -u origin master
+(user name | password )
+
+check in central GitHub
+
+cat >myfile------------- write something ctl+d
+git status
+git add .
+git status
+git commit -m "2nd commit from one region"
+git status
+git log
+git show
+git push origin master 
