@@ -1,0 +1,28 @@
+    1  yum update -y
+    2  yum install git -y
+    3  git --version
+    4  mkdir staticwebsiteaws
+    5  ls
+    6  cd staticwebsiteaws
+    7  pwd
+    8  which git
+    9  git init
+   10  touch index.html style.css index.js about.html contact.html
+   11  ls
+   12  history
+   13  vi index.html
+   14  cat index.html
+   15  clear
+   16  ls
+   18  vi style.css
+   19  vi about.html
+   20  vi contact.html
+   21  vi index.js
+   22  git status
+   23  git add .
+   24  git status
+   25  git commit -m "This is a static AWS website"
+   26  git status
+   27  git remote add origin https://github.com/Satyanarayan4434/staticwebsiteaws.git
+   28  git push -u origin master
+   29  history

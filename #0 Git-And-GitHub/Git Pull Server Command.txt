@@ -1,0 +1,30 @@
+    2  yum update -y
+    5  yum install git -y
+    6  git --version
+    7  git clone https://github.com/Satyanarayan4434/staticwebsiteaws.git
+    8  ls
+    9  cd staticwebsiteaws
+   10  ls
+   11  vi index.html
+   12  cat index.html
+   13  vi index.html
+   14  cat index.html
+   15  vi about.html
+   16  cat about.html
+   17  vi contact.html
+   18  vi style.css
+   19  vi index.js
+   20  clear
+   21  ls
+   22  git status
+   23  git add .
+   24  git status
+   25  git commit -m "All static file updated"
+   27  git config --global user.name "Satyanarayan"
+   28  git config --global user.email "satyanarayanyt@gmail.com"
+   29  git commit -m "All static file updated"
+   30  git status
+   31  git push -u origin master
+   32  git log
+   33  git log --oneline
+   34  history
