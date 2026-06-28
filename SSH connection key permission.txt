@@ -1,0 +1,3 @@
+icacls "C:\Users\Satyanarayan Sen\Downloads\terraform-server-key.pem" /inheritance:r /grant:r "$env:username`:F"
+
+icacls "C:\Users\Satyanarayan Sen\Downloads\terraform-server-key.pem"
