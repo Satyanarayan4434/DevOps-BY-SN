@@ -1,0 +1,82 @@
+---
+- name: Install required packages
+  apt:
+    name:
+      - maven
+      - openjdk-17-jdk
+      - docker.io
+      - git
+    state: present
+    update_cache: yes
+  tags:
+    - packages
+
+- name: Add ubuntu user to docker group
+  user:
+    name: ubuntu
+    groups: docker
+    append: yes
+  tags:
+    - docker_group
+
+- name: Ensure Docker service is running
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  tags:
+    - docker_service
+
+- name: Clone or update Git repository
+  git:
+    repo: "{{ git_repo_url }}"
+    dest: "{{ repo_dir }}"
+    version: main
+    update: yes
+  tags:
+    - git_clone
+
+- name: Build Maven project
+  shell: mvn clean package
+  args:
+    chdir: "{{ repo_dir }}"
+  register: maven_build
+  ignore_errors: yes
+  tags:
+    - maven_build
+
+- name: Print Maven stdout if failed
+  debug:
+    var: maven_build.stdout
+  when: maven_build.rc != 0
+
+- name: Print Maven stderr if failed
+  debug:
+    var: maven_build.stderr
+  when: maven_build.rc != 0
+
+- name: Build Docker image
+  community.docker.docker_image:
+    name: "{{ docker_image_name }}"
+    tag: "{{ docker_image_tag }}"
+    source: build
+    build:
+      path: "{{ repo_dir }}"
+  tags:
+    - docker_build
+
+- name: Log in to Docker Hub
+  community.docker.docker_login:
+    username: "{{ docker_username }}"
+    password: "{{ docker_password }}"
+  tags:
+    - docker_login
+
+- name: Push Docker image
+  community.docker.docker_image:
+    name: "{{ docker_image_name }}"
+    tag: "{{ docker_image_tag }}"
+    source: local
+    push: yes
+  tags:
+    - docker_push

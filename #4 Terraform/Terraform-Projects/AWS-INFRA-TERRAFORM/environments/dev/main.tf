@@ -7,6 +7,8 @@ module "ec2" {
   subnet_id = module.vpc.subnet_id
 }
 
+
+
 module "s3" {
   source = "../../modules/s3"
 

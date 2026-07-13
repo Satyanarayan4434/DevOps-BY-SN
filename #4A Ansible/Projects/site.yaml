@@ -1,0 +1,10 @@
+---
+- name: Complete Maven Docker Deployment
+  hosts: env_dev
+  become: yes
+
+  vars_files:
+    - vault.yaml
+
+  roles:
+    - deploy_app

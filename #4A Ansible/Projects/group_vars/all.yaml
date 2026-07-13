@@ -1,0 +1,4 @@
+git_repo_url: "https://github.com/jaiswaladi246/Boardgame.git"
+repo_dir: "/home/ubuntu/project/Boardgame"
+docker_image_name: "satyanarayan4434/boardgame"
+docker_image_tag: "latest"
