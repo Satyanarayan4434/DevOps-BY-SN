@@ -1,0 +1,26 @@
+plugin: amazon.aws.aws_ec2
+
+regions:
+  - ap-south-1
+
+filters:
+  instance-state-name: running
+  tag:Environment: dev
+  tag:Role: web
+
+hostnames:
+  - ip-address
+
+keyed_groups:
+  - key: ec2_tags.Name
+    prefix: name
+
+  - key: ec2_tags.Environment
+    prefix: env
+
+  - key: ec2_tags.Role
+    prefix: role
+
+compose:
+  ansible_host: public_ip_address
+  ansible_user: "'ubuntu'"
